@@ -1,0 +1,8 @@
+<h1>Bejegyzések</h1>
+<ul>
+    {% for bejegyzes in bejegyzes %}
+    <li><a href="{{ bejegyzes.slug }}/">{{ bejegyzes.created_at|date }} - {{ bejegyzes.title }}</a></li>
+    {% empty %}
+    <li>Nincs elérhető bejegyzés</li>
+    {% endfor %}
+</ul>
