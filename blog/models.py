@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +8,9 @@ from django.template.defaultfilters import slugify
 class Bejegyzes(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name="Cím")
     text = models.TextField(verbose_name="Szöveg")
+    author = models.ForeignKey(
+        to=User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
+    )
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Utolsó módosítás")
