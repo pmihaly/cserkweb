@@ -6,6 +6,6 @@ from . import models
 
 @admin.register(models.Bejegyzes)
 class BejegyzesAdmin(admin.ModelAdmin):
-    list_display = ["title", "created_at", "updated_at"]
+    list_display = ["title", "created_at", "updated_at", "slug"]
     search_fields = ["title", "text"]
 
