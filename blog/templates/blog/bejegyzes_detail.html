@@ -3,3 +3,4 @@
 <p>Író: {{ object.author.username }}</p>
 <p>Létrehozva: {{ object.created_at|date }}</p>
 <p>Szerkesztve: {{ object.updated_at|date }}</p>
+<img src="{{ object.image.url}}" alt="{{ object.title }}">
