@@ -8,7 +8,6 @@ from django.views.generic.detail import DetailView
 
 class BejegyzesList(ListView):
     model = Bejegyzes
-    context_object_name = "bejegyzes"
     template_name = "blog/bejegyzes_list"
 
 
