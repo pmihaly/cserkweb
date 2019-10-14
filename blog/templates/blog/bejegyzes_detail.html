@@ -1,5 +1,5 @@
 <h1>{{ object.title }}</h1>
-<p>{{ object.text }}</p>
+<p>{{ object.text|safe }}</p>
 <p>Író: {{ object.author.username }}</p>
 <p>Létrehozva: {{ object.created_at|date }}</p>
 <p>Szerkesztve: {{ object.updated_at|date }}</p>
