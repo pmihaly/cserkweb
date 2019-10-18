@@ -1,14 +1,14 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
-from tinymce.models import HTMLField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
 
 class Bejegyzes(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name="Cím")
-    text = HTMLField(verbose_name="Szöveg")
+    text = RichTextField(verbose_name="Szöveg")
     author = models.ForeignKey(
         to=User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
     )

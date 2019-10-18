@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/misi/.local/share/virtualenvs/cserkweb-kU-tMb_I/bin/python",
+    "python.pythonPath": "/home/misi/.local/share/virtualenvs/cserkweb-EgGNBweR/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.formatting.provider": "black"
