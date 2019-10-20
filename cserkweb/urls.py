@@ -23,7 +23,6 @@ from about import urls as about_urls
 urlpatterns = [
     path("", include(about_urls)),
     path("bejegyzesek/", include(blog_urls)),
-    path("tinymce/", include("tinymce.urls")),
     path("admin/", admin.site.urls),
 ]
 
