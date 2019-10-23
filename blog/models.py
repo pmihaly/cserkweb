@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.db.models import Q
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -20,7 +21,7 @@ class Bejegyzes(models.Model):
     slug = models.SlugField(unique=True, verbose_name="Link cím")
 
     related_posts = models.ManyToManyField(
-        "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések"
+        "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések", blank=True
     )
 
     def __str__(self):
@@ -39,3 +40,8 @@ class Bejegyzes(models.Model):
 
     def recent_posts(self):
         return Bejegyzes.objects.order_by("-updated_at")[:3]
+
+    def other_posts(self):
+        return Bejegyzes.objects.order_by("-updated_at").exclude(
+            Q(slug=self.slug) | Q(related_posts__slug=self.slug)
+        )[:9]

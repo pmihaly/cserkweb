@@ -10,27 +10,59 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
-            name='Bejegyzes',
+            name="Bejegyzes",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50, verbose_name='Cím')),
-                ('text', ckeditor.fields.RichTextField(verbose_name='Szöveg')),
-                ('image', models.ImageField(upload_to='blog/cover_images/', verbose_name='Borítókép')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Létrehozás')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Utolsó módosítás')),
-                ('slug', models.SlugField(unique=True, verbose_name='Link cím')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author', to=settings.AUTH_USER_MODEL, verbose_name='Író')),
-                ('related_posts', models.ManyToManyField(related_name='_bejegyzes_related_posts_+', to='blog.Bejegyzes', verbose_name='Kapcsolódó bejegyzések')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50, verbose_name="Cím")),
+                ("text", ckeditor.fields.RichTextField(verbose_name="Szöveg")),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="blog/cover_images/", verbose_name="Borítókép"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Utolsó módosítás"
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True, verbose_name="Link cím")),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="author",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Író",
+                    ),
+                ),
+                (
+                    "related_posts",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="_bejegyzes_related_posts_+",
+                        to="blog.Bejegyzes",
+                        verbose_name="Kapcsolódó bejegyzések",
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Bejegyzés',
-                'verbose_name_plural': 'Bejegyzések',
-            },
-        ),
+            options={"verbose_name": "Bejegyzés", "verbose_name_plural": "Bejegyzések"},
+        )
     ]
