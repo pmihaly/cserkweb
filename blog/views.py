@@ -9,6 +9,7 @@ from django.views.generic.detail import DetailView
 class BejegyzesList(ListView):
     model = Bejegyzes
     template_name = "blog/bejegyzes_list.html"
+    queryset = Bejegyzes.objects.order_by("-updated_at")
 
 
 class BejegyzesDetail(DetailView):

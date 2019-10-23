@@ -1,8 +1,36 @@
-<h1>Bejegyzések</h1>
-<ul>
-    {% for bejegyzes in object_list %}
-    <li><a href="{{ bejegyzes.slug }}/">{{ bejegyzes.created_at|date }} - {{ bejegyzes.title }}</a></li>
-    {% empty %}
-    <li>Nincs elérhető bejegyzés</li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Hírek{% endblock %}
+{% block cover-image-url %}/static/img/bg3.jpg{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="title">Bejegyzések</h1>
+    <ul>
+        {% for bejegyzes in object_list %}
+        {% if forloop.first %}<div class="row">{% endif %}
+            <div class="col-lg-4">
+                <a href="{% url 'blog:post-detail' bejegyzes.slug %}" class="card mb-3">
+                    <div class="card-header card-header-image" style="max-height: 30vh; overflow: hidden;">
+                        <img class="img d-block" src="{{ bejegyzes.image.url }}" alt="{{ bejegyzes.title }} kép">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ bejegyzes.title }}</h4>
+                        <p class="card-text">{{ bejegyzes.text|safe }}</p>
+                        <p class="card-text"><small class="text-muted">Szerkesztve
+                                {{ bejegyzes.updated_at|naturaltime }}</small></p>
+                    </div>
+                </a>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% if forloop.last %}</div>{% endif %}
+        {% empty %}
+        <h3>Nincs elérhető bejegyzés</h3>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
