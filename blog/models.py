@@ -7,7 +7,7 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 
-class Bejegyzes(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name="Cím")
     text = RichTextField(verbose_name="Szöveg")
     author = models.ForeignKey(
@@ -39,9 +39,9 @@ class Bejegyzes(models.Model):
         verbose_name_plural = "Bejegyzések"
 
     def recent_posts(self):
-        return Bejegyzes.objects.order_by("-updated_at")[:3]
+        return Post.objects.order_by("-updated_at")[:3]
 
     def other_posts(self):
-        return Bejegyzes.objects.order_by("-updated_at").exclude(
+        return Post.objects.order_by("-updated_at").exclude(
             Q(slug=self.slug) | Q(related_posts__slug=self.slug)
         )[:9]

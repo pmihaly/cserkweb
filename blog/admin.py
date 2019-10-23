@@ -4,11 +4,11 @@ from . import models, forms
 # Register your models here.
 
 
-@admin.register(models.Bejegyzes)
-class BejegyzesAdmin(admin.ModelAdmin):
+@admin.register(models.Post)
+class PostAdmin(admin.ModelAdmin):
     list_display = ["title", "author", "created_at", "updated_at"]
     search_fields = ["title", "text"]
-    form = forms.BejegyzesForm
+    form = forms.PostForm
 
     def save_model(self, request, obj, form, change):
         if not hasattr(obj, "author"):

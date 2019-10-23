@@ -1,8 +1,8 @@
 from django import forms
-from .models import Bejegyzes
+from .models import Post
 
 
-class BejegyzesForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Bejegyzes
+        model = Post
         exclude = ["author", "slug"]

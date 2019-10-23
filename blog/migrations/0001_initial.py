@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Bejegyzes",
+            name="Post",
             fields=[
                 (
                     "id",
@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(
                         blank=True,
                         related_name="_bejegyzes_related_posts_+",
-                        to="blog.Bejegyzes",
+                        to="blog.Post",
                         verbose_name="Kapcsolódó bejegyzések",
                     ),
                 ),
