@@ -19,6 +19,10 @@ class Bejegyzes(models.Model):
 
     slug = models.SlugField(unique=True, verbose_name="Link cím")
 
+    related_posts = models.ManyToManyField(
+        "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések"
+    )
+
     def __str__(self):
         return self.title
 
