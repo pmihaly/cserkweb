@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
         <h4 class="card-title">{{ post.title }}</h4>
-        <p class="card-text">{{ post.text|safe }}</p>
+        <p class="card-text">{{ post.text|striptags|truncatewords:7 }}</p>
         <p class="card-text"><small class="text-muted">Szerkesztve
                 {{ post.updated_at|naturaltime }}</small></p>
     </div>
