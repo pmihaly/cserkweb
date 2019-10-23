@@ -21,8 +21,10 @@
     <div class="page-header header-filter" data-parallax="true"
         style="background-image: url('{% block cover-image-url %}{% endblock %}');"></div>
     <div class="main main-raised">
-        {% block content %}
-        {% endblock %}
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 
     {% include 'footer.html' %}
