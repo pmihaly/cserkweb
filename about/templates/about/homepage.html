@@ -1,4 +1,3 @@
-{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,19 +43,9 @@
         <h1 class="title">Legfrissebb hírek</h1>
         <div class="row">
 
-          {% for bejegyzes in object_list %}
+          {% for post in object_list %}
           <div class="col-md">
-            <a href="{% url 'blog:post-detail' bejegyzes.slug %}" class="card mb-3">
-              <div class="card-header card-header-image" style="max-height: 30vh; overflow: hidden;">
-                <img class="img d-block" src="{{ bejegyzes.image.url }}" alt="{{ bejegyzes.title }} kép">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">{{ bejegyzes.title }}</h4>
-                <p class="card-text">{{ bejegyzes.text|safe }}</p>
-                <p class="card-text"><small class="text-muted">Szerkesztve
-                    {{ bejegyzes.updated_at|naturaltime }}</small></p>
-              </div>
-            </a>
+            {% include 'post_card.html' %}
           </div>
           {% empty %}
           <h3>Nincs elérhető bejegyzés</h3>

@@ -1,40 +1,30 @@
 {% extends 'base.html' %}
-{% load humanize %}
 
 {% block title %}{{object.title}}{% endblock %}
 {% block cover-image-url %}{{ object.image.url}}{% endblock %}
 
 {% block content %}
-<h1 class="title">{{ object.title }}</h1>
-<p>{{ object.text|safe }}</p>
-<p>Író: {{ object.author.username }}</p>
-<p>Létrehozva: {{ object.created_at|date }}</p>
-<p>Szerkesztve: {{ object.updated_at|date }}</p>
+<div class="section">
+    <h1 class="title">{{ object.title }}</h1>
+    <p>{{ object.text|safe }}</p>
+    <p>Író: {{ object.author.username }}</p>
+    <p>Létrehozva: {{ object.created_at|date }}</p>
+    <p>Szerkesztve: {{ object.updated_at|date }}</p>
 
 
-{% for bejegyzes in object.related_posts.all %}
-{% if forloop.first %}
-<h2 class="title">Kapcsolódó bejegyzések</h2>
-<div class="row">
-    {% endif %}
-    <div class="col-lg-4">
-        <a href="{% url 'blog:post-detail' bejegyzes.slug %}" class="card mb-3">
-            <div class="card-header card-header-image" style="max-height: 30vh; overflow: hidden;">
-                <img class="img d-block" src="{{ bejegyzes.image.url }}" alt="{{ bejegyzes.title }} kép">
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">{{ bejegyzes.title }}</h4>
-                <p class="card-text">{{ bejegyzes.text|safe }}</p>
-                <p class="card-text"><small class="text-muted">Szerkesztve
-                        {{ bejegyzes.updated_at|naturaltime }}</small></p>
-            </div>
-        </a>
+    {% for post in object.related_posts.all %}
+    {% if forloop.first %}
+    <h2 class="title">Kapcsolódó bejegyzések</h2>
+    <div class="row">
+        {% endif %}
+        <div class="col-lg-4">
+            {% include 'post_card.html' %}
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
     </div>
-    {% if forloop.counter|divisibleby:3 %}
+    <div class="row">
+        {% endif %}
+        {% if forloop.last %}</div>{% endif %}
+    {% endfor %}
 </div>
-<div class="row">
-    {% endif %}
-    {% if forloop.last %}</div>{% endif %}
-{% endfor %}
-<!-- <img src="{{ object.image.url}}" alt="{{ object.title }}"> -->
 {% endblock %}
