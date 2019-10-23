@@ -1,6 +1,13 @@
-<h1>{{ object.title }}</h1>
+{% extends 'base.html' %}
+
+{% block title %}{{object.title}}{% endblock %}
+{% block cover-image-url %}{{ object.image.url}}{% endblock %}
+
+{% block content %}
+<h1 class="title">{{ object.title }}</h1>
 <p>{{ object.text|safe }}</p>
 <p>Író: {{ object.author.username }}</p>
 <p>Létrehozva: {{ object.created_at|date }}</p>
 <p>Szerkesztve: {{ object.updated_at|date }}</p>
-<img src="{{ object.image.url}}" alt="{{ object.title }}">
+<!-- <img src="{{ object.image.url}}" alt="{{ object.title }}"> -->
+{% endblock %}
