@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "ckeditor",
+    "about",
     "blog",
 ]
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = "cserkweb.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(os.path.dirname(__file__), "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

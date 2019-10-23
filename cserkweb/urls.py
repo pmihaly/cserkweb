@@ -18,7 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from blog import urls as blog_urls
+from about import urls as about_urls
 
-urlpatterns = [path("", include(blog_urls)), path("admin/", admin.site.urls)]
+urlpatterns = [
+    path("", include(about_urls)),
+    path("blog/", include(blog_urls)),
+    path("admin/", admin.site.urls),
+]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
