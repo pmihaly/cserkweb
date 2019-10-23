@@ -32,3 +32,6 @@ class Bejegyzes(models.Model):
     class Meta:
         verbose_name = "Bejegyzés"
         verbose_name_plural = "Bejegyzések"
+
+    def recent_posts(self):
+        return Bejegyzes.objects.order_by("-updated_at")[:3]
