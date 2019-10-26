@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}{{object.title}}{% endblock %}
 {% block cover-image-url %}{{ object.image.url}}{% endblock %}
@@ -6,10 +7,11 @@
 {% block content %}
 <div class="section">
     <h1 class="title">{{ object.title }}</h1>
+    <h4>Írta {{ object.author.username }} {{ object.created_at|naturaltime }}
+        {% if object.created_at|date != object.updated_at|date %}(szerkesztve {{ object.updated_at|naturaltime }})
+        {% endif %}
+    </h4>
     <p>{{ object.text|safe }}</p>
-    <p>Író: {{ object.author.username }}</p>
-    <p>Létrehozva: {{ object.created_at|date }}</p>
-    <p>Szerkesztve: {{ object.updated_at|date }}</p>
 
 
     {% for post in object.related_posts.all %}
