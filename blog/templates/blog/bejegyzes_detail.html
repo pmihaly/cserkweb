@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load random_image %}
 
 {% block title %}{{object.title}}{% endblock %}
-{% block cover-image-url %}{{ object.image.url}}{% endblock %}
+{% block cover-image-url %}{% if object.image %}{{ object.image.url}}{% else %}{% random_image 'blog/cover_images' %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="section">
