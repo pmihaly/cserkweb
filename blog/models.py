@@ -13,7 +13,9 @@ class Post(models.Model):
     author = models.ForeignKey(
         to=User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
     )
-    image = models.ImageField(upload_to="blog/cover_images/", verbose_name="Borítókép")
+    image = models.ImageField(
+        upload_to="blog/cover_images/", verbose_name="Borítókép", blank=True
+    )
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Utolsó módosítás")
