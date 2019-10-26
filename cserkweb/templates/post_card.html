@@ -1,5 +1,5 @@
 {% load humanize %}
-<a href="{% url 'blog:post-detail' post.slug %}" class="card mb-3">
+<a href="{{ post.get_absolute_url }}" class="card mb-3">
     {% if post.image %}
 
     <div class="card-header card-header-image" style="max-height: 30vh; overflow: hidden;">

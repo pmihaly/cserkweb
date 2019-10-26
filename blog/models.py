@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -45,6 +46,9 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Bejegyzés"
         verbose_name_plural = "Bejegyzések"
+
+    def get_absolute_url(self):
+        return reverse("blog:post-detail", kwargs={"slug": self.slug})
 
     # pylint: disable=no-method-argument
     def get_published():
