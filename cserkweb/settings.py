@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "ckeditor",
+    "random_image",
     "about",
     "blog",
 ]
@@ -127,4 +128,6 @@ STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), "assets")]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# RANDOM_IMAGE_DIR = os.path.join(MEDIA_ROOT, "blog", "cover_images")
 
