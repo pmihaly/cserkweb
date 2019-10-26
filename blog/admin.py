@@ -6,7 +6,8 @@ from . import models, forms
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title", "author", "created_at", "updated_at"]
+    list_display = ["title", "author", "published", "created_at", "updated_at"]
+    list_editable = ["published"]
     search_fields = ["title", "text"]
     form = forms.PostForm
 

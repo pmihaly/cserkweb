@@ -9,7 +9,7 @@ from django.views.generic.detail import DetailView
 class PostList(ListView):
     model = Post
     template_name = "blog/bejegyzes_list.html"
-    queryset = Post.objects.order_by("-updated_at")
+    queryset = Post.get_published().order_by("-updated_at")
 
 
 class PostDetail(DetailView):

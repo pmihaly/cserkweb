@@ -24,6 +24,8 @@ class Post(models.Model):
         "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések", blank=True
     )
 
+    published = models.BooleanField(default=True, verbose_name="Közzétett")
+
     def __str__(self):
         return self.title
 
@@ -38,10 +40,17 @@ class Post(models.Model):
         verbose_name = "Bejegyzés"
         verbose_name_plural = "Bejegyzések"
 
+    # pylint: disable=no-method-argument
+    def get_published():
+        return Post.objects.filter(published=True)
+
     def recent_posts(self):
-        return Post.objects.order_by("-updated_at")[:3]
+        return Post.get_published().order_by("-updated_at")[:3]
 
     def other_posts(self):
-        return Post.objects.order_by("-updated_at").exclude(
-            Q(slug=self.slug) | Q(related_posts__slug=self.slug)
-        )[:9]
+        return (
+            Post.get_published()
+            .order_by("-updated_at")
+            .exclude(Q(slug=self.slug) | Q(related_posts__slug=self.slug))[:9]
+        )
+
