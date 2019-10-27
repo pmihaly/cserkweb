@@ -25,7 +25,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "wubalubadubdub")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
-# DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(" ")
 
@@ -128,6 +127,4 @@ STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), "assets")]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-# RANDOM_IMAGE_DIR = os.path.join(MEDIA_ROOT, "blog", "cover_images")
 
