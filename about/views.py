@@ -13,3 +13,7 @@ class Homepage(ListView):
 
 class AboutUs(TemplateView):
     template_name = "about/about_us.html"
+
+
+class House(TemplateView):
+    template_name = "about/house.html"
