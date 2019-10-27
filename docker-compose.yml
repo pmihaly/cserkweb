@@ -46,8 +46,8 @@ services:
     command: watchtower cserkweb_django --interval 30
     restart: unless-stopped
     environment:
-      REPO_USER=1111cserkcsapat
-      REPO_PASS=C53rK1212
+      - REPO_USER=1111cserkcsapat
+      - REPO_PASS=C53rK1212
 
 volumes:
   postgres_data:
