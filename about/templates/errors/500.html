@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load random_image %}
+
+{% block title %}Hiba{% endblock %}
+{% block cover-image-url %}{% random_image 'blog/cover_images' %}{% endblock %}
+
+{% block content %}
+<div class="section text-center">
+    <h1 class="title">Hibába ütköztünk</h1>
+    <h3>Máris a megoldáson fáradozunk</h3>
+    <a href="/" class="btn btn-info">Vissza a főoldalra</a>
+</div>
+{% endblock %}

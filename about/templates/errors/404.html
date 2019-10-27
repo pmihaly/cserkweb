@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load random_image %}
+
+{% block title %}:({% endblock %}
+{% block cover-image-url %}{% random_image 'blog/cover_images' %}{% endblock %}
+
+{% block content %}
+<div class="section text-center">
+    <h1 class="title">Nem található ilyen oldal</h1>
+    <h3>Lehet, hogy egy halott linkre kattintottál vagy véletlen félreírtál valamit</h3>
+    <a href="/" class="btn btn-info">Vissza a főoldalra</a>
+</div>
+{% endblock %}

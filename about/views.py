@@ -17,3 +17,14 @@ class AboutUs(TemplateView):
 
 class House(TemplateView):
     template_name = "about/house.html"
+
+
+def handler404(request, exception):
+    response = render(request, "errors/404.html", status=404)
+    print(exception)
+    return response
+
+
+def handler500(request):
+    response = render(request, "errors/500.html", status=500)
+    return response

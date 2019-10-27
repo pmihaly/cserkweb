@@ -20,6 +20,9 @@ from django.conf import settings
 from blog import urls as blog_urls
 from about import urls as about_urls
 
+handler404 = "about.views.handler404"
+handler500 = "about.views.handler500"
+
 urlpatterns = [
     path("", include(about_urls)),
     path("blog/", include(blog_urls)),
