@@ -21,7 +21,6 @@ class House(TemplateView):
 
 def handler404(request, exception):
     response = render(request, "errors/404.html", status=404)
-    print(exception)
     return response
 
 
