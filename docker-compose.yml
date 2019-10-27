@@ -17,7 +17,7 @@ services:
     restart: always # Lehet hogy a web hamarabb indul el, mint az adatbázis
     depends_on:
       - db
-      
+
   db:
     container_name: cserkweb_postgres
     image: postgres:12.0-alpine
