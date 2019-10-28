@@ -4,7 +4,6 @@ services:
   web:
     container_name: cserkweb_django
     build: ./
-    image: 1111cserkcsapat/cserkweb_web
     command: bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn --workers=3 cserkweb.wsgi -b 0.0.0.0:8000"
     volumes:
       - ./:/usr/src/app/
@@ -36,18 +35,6 @@ services:
       - 80:80
     depends_on:
       - web
-
-  watchtower:
-    image: v2tec/watchtower
-    container_name: watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /root/.docker/config.json:/config.json
-    command: watchtower cserkweb_django --interval 30
-    restart: unless-stopped
-    environment:
-      - REPO_USER=1111cserkcsapat
-      - REPO_PASS=C53rK1212
 
 volumes:
   postgres_data:
