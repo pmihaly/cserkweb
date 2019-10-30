@@ -26,7 +26,12 @@ handler500 = "about.views.handler500"
 urlpatterns = [
     path("", include(about_urls)),
     path("blog/", include(blog_urls)),
-    path("admin/", admin.site.urls),
+    path("szervezok/", admin.site.urls),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Admin site personalisation
+admin.site.site_header = "Szervezői oldal"
+admin.site.site_title = "1111. Szent István Cserkészcsapat"
+admin.site.index_title = "Szervezői oldal"
