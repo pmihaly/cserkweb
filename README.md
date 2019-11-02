@@ -35,7 +35,12 @@ nano .env
 docker-compose up --build -d
 ```
 
-3. _Állítsd be az autmatikus frissítést_
-   - [Deploy key létrehozása](https://gist.github.com/zhujunsan/a0becf82ade50ed06115)
-   - `sudo crontab -e`, fájl utolsó sorában: `0 * * * * cd {PROJEKT HELYE} && sudo -u {NEM ROOT FELHASZNÁLÓ} git pull && docker-compose up --build -d`
-     - óránkénti `git pull` és konténerek frissítése
+3. Hozd létre az első szervezőt
+
+```
+docker-compose exec web python manage.py createsuperuser
+```
+
+4. **Tölts fel egy képet**
+
+   - Hozz egy tartalom nélküli, nem nyilvános bejegyzést képpel ellátva
