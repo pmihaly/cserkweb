@@ -1,4 +1,5 @@
 {% load static %}
+{% load random_image %}
 <!doctype html>
 <html lang="en">
 
@@ -12,7 +13,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description"
         content="Every landing page needs a small description after the big bold title, that's why we added this text here. ">
-    {% block meta %}{% endblock %}
+    {% block meta %}
+    <meta property="og:title" content="1111. Szent István Cserkészcsapat" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url"
+        content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ request.path }}" />
+    <meta property="og:image"
+        content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% random_image 'blog/cover_images' %}" />
+    {% endblock %}
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
