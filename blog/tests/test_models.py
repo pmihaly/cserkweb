@@ -6,22 +6,10 @@ from model_bakery import baker
 
 from blog.models import Post
 
+from . import InitPosts
 
-class PostTests(TestCase):
-    def setUp(self):
-        self.text = "<h1>test test</h1>"
-        self.author = baker.make(User)
 
-        self.related_posts = baker.prepare(
-            Post, _quantity=4, text=self.text, author=self.author
-        )
-
-        self.post = baker.make(
-            Post, make_m2m=True, text=self.text, related_posts=self.related_posts
-        )
-
-        self.other_posts = baker.make(Post, _quantity=30, text=self.text)
-
+class TestModels(InitPosts):
     def test_post_creation(self):
         self.assertTrue(isinstance(self.post, Post))
 
