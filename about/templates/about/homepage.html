@@ -28,11 +28,11 @@
       <div class="row">
 
         {% for post in object_list %}
-        <div class="col-md">
+        <div class="col-lg-4 mr-auto ml-auto">
           {% include 'post_card.html' %}
         </div>
         {% empty %}
-        <h3>Nincs elérhető bejegyzés</h3>
+        <h3 class="mr-auto ml-auto">Nincs elérhető bejegyzés</h3>
         {% endfor %}
       </div>
 
