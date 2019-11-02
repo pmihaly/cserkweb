@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "random_image",
     "about",
     "blog",
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
