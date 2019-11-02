@@ -15,3 +15,14 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post
     template_name = "blog/bejegyzes_detail.html"
+
+    def get_context_data(self, **kwargs):
+
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        context["domain_name"] = (
+            "https://"
+            if self.request.is_secure()
+            else "http://" + self.request.get_host()
+        )
+
+        return context
