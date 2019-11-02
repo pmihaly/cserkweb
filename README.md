@@ -1,5 +1,7 @@
 # Cserkweb
 
+[![buddy pipeline](https://app.buddy.works/pappmisi/cserkweb/pipelines/pipeline/221050/badge.svg?token=2eccef1d1e1e3a428a00339a5afafef95a187ae2e35257504be8b2c505052fa3 "buddy pipeline")](https://app.buddy.works/pappmisi/cserkweb/pipelines/pipeline/221050)
+
 ## Fejlesztői környezet létrehozása
 
 1. Hozd létre a virtuális környezetet és telepítsd a függőségeket Pipenv-el
