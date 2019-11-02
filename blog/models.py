@@ -10,7 +10,7 @@ from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name="Cím")
-    text = RichTextField(verbose_name="Szöveg")
+    text = RichTextField(verbose_name="Szöveg", blank=True, null=True)
     author = models.ForeignKey(
         to=User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
     )
