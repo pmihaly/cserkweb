@@ -23,3 +23,7 @@ class InitPosts(TestCase):
         )
 
         self.other_posts = baker.make(Post, _quantity=30, text=self.text, image="")
+
+        self.post_with_image = baker.make(
+            Post, text=self.text, image="cover_images/pic.jpg"
+        )
