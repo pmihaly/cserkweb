@@ -3,27 +3,28 @@
         <nav class="float-left">
             <ul>
                 <li>
-                    <a href="https://www.creative-tim.com">
+                    <a href="https://www.facebook.com/1111cscs">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://creative-tim.com/presentation">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://blog.creative-tim.com">
+                    <a href="{% url 'about:about_us' %}">
                         Rólunk
                     </a>
                 </li>
+                <li>
+                    <a href="{% url 'blog:post-list' %}">
+                        Blog
+                    </a>
+                </li>
+
             </ul>
         </nav>
-        <div class="copyright float-right">
+        <p class="copyright float-right">
             &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script>, <a href="https://github.com/pmihaly/">Papp Mihály</a>
-        </div>
+            </script>, csapatnak <i class="material-icons">favorite</i>-el készítette: <a href="https://github.com/pmihaly/">Papp Mihály</a>
+        </p>
     </div>
 </footer>
