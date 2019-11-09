@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <h4 class="card-title">{{ post.title }}</h4>
-        <p class="card-text">{{ post.text|striptags|truncatewords:7 }}</p>
+        <p class="card-text">{{ post.text|truncatewords:7 }}</p>
         <p class="card-text"><small class="text-muted">{{ post.created_at|naturaltime }}</small></p>
     </div>
 
@@ -18,7 +18,7 @@
         <p class="category">{{ post.created_at|naturaltime}}</p>
     </div>
     <div class="card-body">
-        <p class="card-text">{{ post.text|striptags|truncatewords:50}}</p>
+            <p class="card-text">{{ post.text|striptags|safe|truncatewords:50}}</p>
     </div>
 
     {% endif %}
