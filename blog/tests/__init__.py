@@ -14,6 +14,8 @@ class InitPosts(TestCase):
             Post, _quantity=4, text=self.text, author=self.author, image=""
         )
 
+        self.other_posts = baker.make(Post, _quantity=30, text=self.text, image="")
+
         self.post = baker.make(
             Post,
             make_m2m=True,
@@ -21,8 +23,6 @@ class InitPosts(TestCase):
             related_posts=self.related_posts,
             image="",
         )
-
-        self.other_posts = baker.make(Post, _quantity=30, text=self.text, image="")
 
         self.post_with_image = baker.make(
             Post, text=self.text, image="cover_images/pic.jpg"
