@@ -6,25 +6,25 @@ from . import InitPosts
 
 class TestViews(InitPosts):
     def test_post_list_view(self):
-        url = reverse("blog:post-list")
+        url = reverse("blog:announcement-list")
         res = self.client.get(url)
 
         self.assertContains(res, self.post.title, status_code=200)
 
     def test_post_list_view_with_image(self):
-        url = reverse("blog:post-list")
+        url = reverse("blog:announcement-list")
         res = self.client.get(url)
 
         self.assertContains(res, self.post_with_image.image.url, status_code=200)
 
     def test_post_detail_view(self):
-        url = reverse("blog:post-detail", kwargs={"slug": self.post.slug})
+        url = reverse("blog:announcement-detail", kwargs={"slug": self.post.slug})
         res = self.client.get(url)
 
         self.assertContains(res, self.post.title, status_code=200)
 
     def test_post_detail_view_with_image(self):
-        url = reverse("blog:post-detail", kwargs={"slug": self.post.slug})
+        url = reverse("blog:announcement-detail", kwargs={"slug": self.post.slug})
         res = self.client.get(url)
 
         self.assertContains(res, self.post_with_image.image.url, status_code=200)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Announcement
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
@@ -7,14 +7,14 @@ from django.views.generic.detail import DetailView
 
 
 class PostList(ListView):
-    model = Post
+    model = Announcement
     template_name = "blog/bejegyzes_list.html"
-    queryset = Post.get_published().order_by("-updated_at")
+    queryset = Announcement.get_published().order_by("-updated_at")
     paginate_by = 9
 
 
 class PostDetail(DetailView):
-    model = Post
+    model = Announcement
     template_name = "blog/bejegyzes_detail.html"
 
     def get_context_data(self, **kwargs):

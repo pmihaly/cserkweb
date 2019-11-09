@@ -4,8 +4,8 @@ from . import models, forms
 # Register your models here.
 
 
-@admin.register(models.Post)
-class PostAdmin(admin.ModelAdmin):
+@admin.register(models.Announcement)
+class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ["title", "author", "published", "created_at", "updated_at"]
     list_editable = ["published"]
     search_fields = ["title", "text"]

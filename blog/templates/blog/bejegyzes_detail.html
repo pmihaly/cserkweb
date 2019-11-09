@@ -27,7 +27,7 @@
     <p>{{ object.text|safe }}</p>
 
 
-    {% for post in object.related_posts.all %}
+    {% for post in object.related.all %}
     {% if forloop.first %}
     <h2 class="title">Kapcsolódó bejegyzések</h2>
     <div class="row">
@@ -42,7 +42,7 @@
         {% if forloop.last %}</div>{% endif %}
     {% endfor %}
 
-    {% for post in object.other_posts.all %}
+    {% for post in object.get_other.all %}
     {% if forloop.first %}
     <h2 class="title">További hírek</h2>
     <div class="row">
