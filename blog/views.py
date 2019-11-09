@@ -10,6 +10,7 @@ class PostList(ListView):
     model = Post
     template_name = "blog/bejegyzes_list.html"
     queryset = Post.get_published().order_by("-updated_at")
+    paginate_by = 9
 
 
 class PostDetail(DetailView):
