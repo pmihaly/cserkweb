@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import Q
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django.utils import timezone
 
 # Create your models here.
 
@@ -69,3 +70,22 @@ class Announcement(Post):
             .order_by("-updated_at")
             .exclude(Q(slug=self.slug) | Q(related__slug=self.slug))[:9]
         )
+
+
+class Event(Post):
+    published = models.BooleanField(default=True, verbose_name="Közzétett állapot")
+
+    start_date = models.DateTimeField(
+        verbose_name="Kezdeti dátum és idő", default=timezone.now
+    )
+    end_date = models.DateTimeField(
+        verbose_name="Befejezési dátum és idő", default=timezone.now
+    )
+
+    class Meta:
+        verbose_name = "Esemény"
+        verbose_name_plural = "Események"
+
+    def get_absolute_url(self):
+        return reverse("blog:event-detail", kwargs={"slug": self.slug})
+
