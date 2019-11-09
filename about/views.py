@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from blog.models import Post
+from blog.models import Announcement
 
 # Create your views here.
 
 
 class Homepage(ListView):
     template_name = "about/homepage.html"
-    queryset = Post.recent_posts
+    queryset = Announcement.get_recent
 
 
 class AboutUs(TemplateView):

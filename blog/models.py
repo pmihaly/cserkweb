@@ -1,9 +1,9 @@
-from django.db import models
-from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
-from django.db.models import Q
-from django.urls import reverse
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models import Q
+from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -18,16 +18,14 @@ class Post(models.Model):
         upload_to="blog/cover_images/", verbose_name="Borítókép", blank=True
     )
 
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Utolsó módosítás")
-
-    slug = models.SlugField(unique=True, verbose_name="Link cím")
-
-    related_posts = models.ManyToManyField(
-        "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések", blank=True
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="Létrehozás dátuma"
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name="Utolsó módosítás dátuma"
     )
 
-    published = models.BooleanField(default=True, verbose_name="Közzétett")
+    slug = models.SlugField(unique=True, verbose_name="Link cím")
 
     def __str__(self):
         return self.title
@@ -43,24 +41,31 @@ class Post(models.Model):
         self.slug = slugify(self.title)
         super().update(*args, **kwargs)
 
+
+class Announcement(Post):
+    published = models.BooleanField(default=True, verbose_name="Közzétett állapot")
+
+    related = models.ManyToManyField(
+        "self", symmetrical=True, verbose_name="Kapcsolódó bejegyzések", blank=True
+    )
+
     class Meta:
-        verbose_name = "Bejegyzés"
-        verbose_name_plural = "Bejegyzések"
+        verbose_name = "Közlemény"
+        verbose_name_plural = "Közlemények"
 
     def get_absolute_url(self):
-        return reverse("blog:post-detail", kwargs={"slug": self.slug})
+        return reverse("blog:announcement-detail", kwargs={"slug": self.slug})
 
     # pylint: disable=no-method-argument
     def get_published():
-        return Post.objects.filter(published=True)
+        return Announcement.objects.filter(published=True)
 
-    def recent_posts(self):
-        return Post.get_published().order_by("-updated_at")[:3]
+    def get_recent(self):
+        return Announcement.get_published().order_by("-updated_at")[:3]
 
-    def other_posts(self):
+    def get_other(self):
         return (
-            Post.get_published()
+            Announcement.get_published()
             .order_by("-updated_at")
-            .exclude(Q(slug=self.slug) | Q(related_posts__slug=self.slug))[:9]
+            .exclude(Q(slug=self.slug) | Q(related__slug=self.slug))[:9]
         )
-

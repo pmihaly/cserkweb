@@ -1,8 +1,8 @@
 from django import forms
-from .models import Post
+from .models import Announcement
 
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model = Post
+        model = Announcement
         exclude = ["author", "slug"]
