@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from .models import Announcement, Event
+from .models import Announcement, Event, Note
 
 # Create your views here.
 
@@ -34,6 +34,9 @@ class AnnouncementDetail(DetailView):
             if self.request.is_secure()
             else "http://" + self.request.get_host()
         )
+        context["notes"] = Note.objects.filter(post__id=self.object.id).order_by(
+            "-created_at"
+        )
 
         return context
 
@@ -51,5 +54,8 @@ class EventDetail(DetailView):
             else "http://" + self.request.get_host()
         )
         context["event"] = True
+        context["notes"] = Note.objects.filter(post__id=self.object.id).order_by(
+            "-created_at"
+        )
 
         return context
