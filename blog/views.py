@@ -24,7 +24,7 @@ class PostList(ListView):
 
 class AnnouncementDetail(DetailView):
     model = Announcement
-    template_name = "blog/bejegyzes_detail.html"
+    template_name = "blog/post_detail.html"
 
     def get_context_data(self, **kwargs):
 
@@ -40,7 +40,7 @@ class AnnouncementDetail(DetailView):
 
 class EventDetail(DetailView):
     model = Event
-    template_name = "blog/bejegyzes_detail.html"
+    template_name = "blog/post_detail.html"
 
     def get_context_data(self, **kwargs):
 
