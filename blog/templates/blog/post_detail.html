@@ -20,6 +20,9 @@
 {% block content %}
 <div class="section">
     <h1 class="title">{{ object.title }}</h1>
+    {% if object.start_date and object.end_date %}
+        <h3>{{ object.start_date }} - {{ object.end_date }}</h3>
+    {% endif %}
     <h4>Írta {{ object.author.username }} {{ object.created_at|naturaltime }}
         {% if object.created_at|date != object.updated_at|date %}(szerkesztve {{ object.updated_at|naturaltime }})
         {% endif %}
