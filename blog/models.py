@@ -91,3 +91,23 @@ class Event(Post):
     def get_published():
         return Event.objects.filter(published=True)
 
+
+class Note(models.Model):
+    post = models.ForeignKey(
+        "blog.Post", verbose_name="Megjegyzés", on_delete=models.CASCADE
+    )
+    text = models.TextField(verbose_name="Szöveg", blank=True, null=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="Létrehozás dátuma"
+    )
+
+    def __str__(self):
+        return f"{self.post.__str__()} {self.created_at}"
+
+    def __unicode__(self):
+        return f"{self.post.__str__()} {self.created_at}"
+
+    class Meta:
+        verbose_name = "Megjegyzés"
+        verbose_name_plural = "Megjegyzések"
+

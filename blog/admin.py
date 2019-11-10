@@ -4,6 +4,11 @@ from . import models, forms
 # Register your models here.
 
 
+class NoteInline(admin.StackedInline):
+    model = models.Note
+    max_num = 2
+
+
 @admin.register(models.Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
     model = models.Announcement
@@ -11,6 +16,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
     list_editable = ["published"]
     search_fields = ["title", "text"]
     form = forms.PostForm
+    inlines = [NoteInline]
 
     def save_model(self, request, obj, form, change):
         if not hasattr(obj, "author"):
@@ -25,6 +31,7 @@ class EventAdmin(admin.ModelAdmin):
     list_editable = ["published"]
     search_fields = ["title", "text"]
     form = forms.PostForm
+    inlines = [NoteInline]
 
     def save_model(self, request, obj, form, change):
         if not hasattr(obj, "author"):
