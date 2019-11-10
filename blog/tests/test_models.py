@@ -32,15 +32,6 @@ class TestModels(InitPosts):
         )
         self.assertEqual(self.post.get_absolute_url(), absolute_url)
 
-    def test_get_recent(self):
-        get_recent = Announcement.get_recent(Announcement)
-
-        self.assertEqual(len(get_recent), 3)
-
-        self.assertGreaterEqual(get_recent[0].updated_at, get_recent[1].updated_at)
-        self.assertGreaterEqual(get_recent[0].updated_at, get_recent[2].updated_at)
-        self.assertGreaterEqual(get_recent[1].updated_at, get_recent[2].updated_at)
-
     def test_get_other(self):
         get_other = self.post.get_other()
 
