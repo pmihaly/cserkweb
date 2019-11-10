@@ -1,14 +1,24 @@
+from itertools import chain
+
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from blog.models import Announcement
+
+from blog.models import Announcement, Event
 
 # Create your views here.
 
 
 class Homepage(ListView):
     template_name = "about/homepage.html"
-    queryset = Announcement.get_recent
+
+    def get_queryset(self):
+        return list(
+            chain(
+                Announcement.get_published().order_by("-updated_at"),
+                Event.get_published().order_by("-updated_at"),
+            )
+        )
 
 
 class AboutUs(TemplateView):
