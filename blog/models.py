@@ -60,9 +60,6 @@ class Announcement(Post):
     def get_published():
         return Announcement.objects.filter(published=True)
 
-    def get_recent(self):
-        return Announcement.get_published().order_by("-updated_at")[:3]
-
     def get_other(self):
         return (
             Announcement.get_published()

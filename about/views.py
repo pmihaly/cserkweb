@@ -18,7 +18,7 @@ class Homepage(ListView):
                 Announcement.get_published().order_by("-updated_at"),
                 Event.get_published().order_by("-updated_at"),
             )
-        )
+        )[:3]
 
 
 class AboutUs(TemplateView):
