@@ -23,10 +23,20 @@
     {% if object.start_date and object.end_date %}
         <h3>{{ object.start_date }} - {{ object.end_date }}</h3>
     {% endif %}
-    <h4>Írta {{ object.author.username }} {{ object.created_at|naturaltime }}
+    <h4 class="mb-4">Írta {{ object.author.username }} {{ object.created_at|naturaltime }}
         {% if object.created_at|date != object.updated_at|date %}(szerkesztve {{ object.updated_at|naturaltime }})
         {% endif %}
     </h4>
+
+    {% for note in notes %}
+        <div class="card" style="margin-bottom: 5rem;margin-top: 5rem;">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">{{ note.text }}</h3>
+                <p class="category">{{ note.created_at|naturaltime }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
     <p>{{ object.text|safe }}</p>
 
 
