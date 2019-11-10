@@ -57,7 +57,6 @@ class Announcement(Post):
     def get_absolute_url(self):
         return reverse("blog:announcement-detail", kwargs={"slug": self.slug})
 
-    # pylint: disable=no-method-argument
     def get_published():
         return Announcement.objects.filter(published=True)
 
@@ -88,4 +87,7 @@ class Event(Post):
 
     def get_absolute_url(self):
         return reverse("blog:event-detail", kwargs={"slug": self.slug})
+
+    def get_published():
+        return Event.objects.filter(published=True)
 
