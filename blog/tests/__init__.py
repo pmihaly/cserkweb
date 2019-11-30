@@ -12,12 +12,12 @@ class InitPosts(TestCase):
 
     def setup_test_object_no_relation(self, model, **model_kwargs):
 
-        # pylint: disable=unused-variable
-        other_objects = baker.make(model, _quantity=30, text=self.text, image="")
-
         test_object = baker.make(
             model, make_m2m=True, text=self.text, image="", **model_kwargs
         )
+
+        # pylint: disable=unused-variable
+        other_objects = baker.make(model, _quantity=30, text=self.text, image="")
 
         object_with_image = baker.make(
             model, text=self.text, image="cover_images/pic.jpg"
@@ -25,7 +25,7 @@ class InitPosts(TestCase):
 
         return (test_object, object_with_image)
 
-    def setup_test_object_relation(self, model, **model_kwargs):
+    def setup_test_object_with_relation(self, model, **model_kwargs):
 
         related_objects = baker.prepare(
             model,
@@ -46,4 +46,6 @@ class InitPosts(TestCase):
             self.announcement,
             self.announcement_with_image,
             self.related_announcements,
-        ) = self.setup_test_object_relation(Announcement)
+        ) = self.setup_test_object_with_relation(Announcement)
+
+        (self.event, self.event_with_image) = self.setup_test_object_no_relation(Event)

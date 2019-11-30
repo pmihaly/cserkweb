@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from model_bakery import baker
 
-from blog.models import Announcement
+from blog.models import Announcement, Event
 
 from . import InitPosts
 
 
-class TestModels(InitPosts):
+class TestAnncouncement(InitPosts):
     def test_announcement_creation(self):
         self.assertTrue(isinstance(self.announcement, Announcement))
 
@@ -42,3 +42,25 @@ class TestModels(InitPosts):
         self.assertNotIn(self.announcement, get_other)
 
         self.assertNotIn(self.related_announcements, get_other)
+
+
+class TestEvent(InitPosts):
+    def test_announcement_creation(self):
+        self.assertTrue(isinstance(self.event, Event))
+
+        self.assertEqual(self.event.__unicode__(), self.event.title)
+        self.assertEqual(self.event.__str__(), self.event.title)
+
+        self.assertEqual(self.event.slug, slugify(self.event.title))
+
+    def test_update(self):
+        updated_event, _ = Event.objects.update_or_create(
+            title=self.event.title, defaults={"title": "yoyoyo"}
+        )
+
+        self.assertNotEqual(updated_event.slug, self.event.slug)
+        self.assertEqual(self.event.slug, slugify(self.event.title))
+
+    def test_get_absolute_url(self):
+        absolute_url = reverse("blog:event-detail", kwargs={"slug": self.event.slug})
+        self.assertEqual(self.event.get_absolute_url(), absolute_url)

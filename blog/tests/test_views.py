@@ -4,35 +4,60 @@ from django.urls import reverse
 from . import InitPosts
 
 
-class TestViews(InitPosts):
+class TestAnnouncementViews(InitPosts):
     def test_announcement_list_view(self):
-        url = reverse("blog:announcement-list")
-        res = self.client.get(url)
+        res = self.client.get(reverse("blog:post-list"))
 
         self.assertContains(res, self.announcement.title, status_code=200)
 
     def test_announcement_list_view_with_image(self):
-        url = reverse("blog:announcement-list")
-        res = self.client.get(url)
+        res = self.client.get(reverse("blog:post-list"))
 
         self.assertContains(
             res, self.announcement_with_image.image.url, status_code=200
         )
 
     def test_announcement_detail_view(self):
-        url = reverse(
-            "blog:announcement-detail", kwargs={"slug": self.announcement.slug}
+        res = self.client.get(
+            reverse("blog:announcement-detail", kwargs={"slug": self.announcement.slug})
         )
-        res = self.client.get(url)
 
         self.assertContains(res, self.announcement.title, status_code=200)
 
     def test_announcement_detail_view_with_image(self):
-        url = reverse(
-            "blog:announcement-detail", kwargs={"slug": self.announcement.slug}
+        res = self.client.get(
+            reverse(
+                "blog:announcement-detail",
+                kwargs={"slug": self.announcement_with_image.slug},
+            )
         )
-        res = self.client.get(url)
 
         self.assertContains(
             res, self.announcement_with_image.image.url, status_code=200
         )
+
+
+class TestEventViews(InitPosts):
+    def test_event_list_view(self):
+        res = self.client.get(reverse("blog:post-list"))
+        self.assertContains(res, self.event.title, status_code=200)
+
+    def test_event_list_view_with_image(self):
+        res = self.client.get(reverse("blog:post-list"))
+
+        self.assertContains(res, self.event_with_image.image.url, status_code=200)
+
+    def test_event_detail_view(self):
+        res = self.client.get(
+            reverse("blog:event-detail", kwargs={"slug": self.event.slug})
+        )
+
+        self.assertContains(res, self.event.title, status_code=200)
+
+    def test_event_detail_view_with_image(self):
+        res = self.client.get(
+            reverse("blog:event-detail", kwargs={"slug": self.event_with_image.slug})
+        )
+
+        self.assertContains(res, self.event_with_image.image.url, status_code=200)
+
