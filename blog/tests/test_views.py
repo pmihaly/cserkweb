@@ -36,6 +36,24 @@ class TestAnnouncementViews(InitPosts):
             res, self.announcement_with_image.image.url, status_code=200
         )
 
+    def test_announcement_note(self):
+        res = self.client.get(
+            reverse(
+                "blog:announcement-detail",
+                kwargs={"slug": self.announcement_with_note.slug},
+            )
+        )
+
+        self.assertContains(res, self.announcement_note.text, status_code=200)
+
+        irrevelant_res = self.client.get(
+            reverse("blog:announcement-detail", kwargs={"slug": self.announcement.slug})
+        )
+
+        self.assertNotContains(
+            irrevelant_res, self.announcement_note.text, status_code=200
+        )
+
 
 class TestEventViews(InitPosts):
     def test_event_list_view(self):
@@ -60,4 +78,17 @@ class TestEventViews(InitPosts):
         )
 
         self.assertContains(res, self.event_with_image.image.url, status_code=200)
+
+    def test_event_note(self):
+        res = self.client.get(
+            reverse("blog:event-detail", kwargs={"slug": self.event_with_note.slug},)
+        )
+
+        self.assertContains(res, self.event_note.text, status_code=200)
+
+        irrevelant_res = self.client.get(
+            reverse("blog:event-detail", kwargs={"slug": self.event.slug})
+        )
+
+        self.assertNotContains(irrevelant_res, self.event_note.text, status_code=200)
 
