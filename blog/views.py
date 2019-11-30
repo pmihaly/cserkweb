@@ -3,6 +3,7 @@ from itertools import chain
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.conf import settings
 
 from .models import Announcement, Event, Note
 
@@ -11,7 +12,9 @@ from .models import Announcement, Event, Note
 
 class PostList(ListView):
     template_name = "blog/post_list.html"
-    paginate_by = 9
+    # Nem kell ellenőriznünk a Django beépített lapozását
+    # Csak azt tesztejük hogy látjuk-e az objektumokat ListViewban
+    paginate_by = 9 if not settings.TESTING else 0
 
     def get_queryset(self):
         return list(

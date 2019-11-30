@@ -5,7 +5,7 @@ from .views import PostList, AnnouncementDetail, EventDetail
 app_name = "blog"
 
 urlpatterns = [
-    path("", PostList.as_view(), name="announcement-list"),
+    path("", PostList.as_view(), name="post-list"),
     path(
         "kozlemeny/<slug:slug>/",
         AnnouncementDetail.as_view(),

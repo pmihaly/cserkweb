@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -128,4 +129,7 @@ STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), "assets")]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Ellenőrizze hogy teszt környezetben indították-e el a szervert
+TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
 
