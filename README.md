@@ -18,7 +18,7 @@ A budakalászi cserkészeknek terveztem ezt a weboldalt, hogy attraktívabb kül
 ## Funkciók
 
 * 🍃 Igényes design, amivel még jobb első benyomást okozhatunk a látogatóknak
-      * 📱 Teljesen reszponzív 
+    * 📱 Teljesen reszponzív 
 * ⚜ Mutassuk be a csapatot
 * 🏡 ..., és mutassuk be a bérelhető cserkészházat is
 * ✏ Szervezők eseményeket (pl. táborok) és közleményeket írhatnak ki
