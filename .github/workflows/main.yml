@@ -17,6 +17,6 @@ jobs:
     - name: 🔍 Futó konténerek vizsgálata
       run: docker ps -a
     - name: 🔍 Django logok vizsgálata
-      run: docker logs web
+      run: docker logs cserkweb_web
     - name: 🚨 Tesztelés
-      run: docker exec web python manage.py test
+      run: docker exec cserkweb_web python manage.py test
