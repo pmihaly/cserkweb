@@ -1,4 +1,4 @@
-# 1111 .Szent István cserkészcsapat új weboldala 📚
+# ⚜ 1111. Szent István cserkészcsapat új weboldala
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47941079/130056456-67ac8987-df33-473f-a2c1-8b6d1b77ec7b.png">
