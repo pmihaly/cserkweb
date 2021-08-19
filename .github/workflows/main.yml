@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: 🔧 .env másolása
+      run: cp .env.example .env
+    - name: 🖼 kötelező assetek letöltése
+      run: mkdir -p media/blog/cover_images && wget --content-disposition -P media/blog/cover_images "https://picsum.photos/2000"
+    - name: 🏗 🏃 docker compose stack építése és futtatása
+      run: docker-compose up --build -d
+    - name: 🔍 Futó konténerek vizsgálata
+      run: docker ps -a
+    - name: 🔍 Django logok vizsgálata
+      run: docker logs web
+    - name: 🚨 Tesztelés
+      run: docker exec web python manage.py test
