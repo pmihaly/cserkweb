@@ -45,10 +45,16 @@ A budakalászi cserkészeknek terveztem ezt a weboldalt, hogy attraktívabb kül
    mkdir -p static media/blog/cover_images
    ```
    
-3. Építsd meg a Docker konténereket és indítsd el a szervert a háttérben
+1. Építsd meg a Docker konténereket és indítsd el a szervert a háttérben
 
    ```shell
    docker-compose up --build -d
+   ```
+   
+1. Teszteld a projektet, hogy helyesen működik-e minden
+
+   ```
+   docker-compose exec web python manage.py test
    ```
 
 1. Hozd létre az első szervezőt
