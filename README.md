@@ -4,7 +4,8 @@
 <img src="https://user-images.githubusercontent.com/47941079/130056456-67ac8987-df33-473f-a2c1-8b6d1b77ec7b.png">
 
 
-![Licence Badge](https://img.shields.io/github/license/pmihaly/cserkweb) 
+![Licence Badge](https://img.shields.io/github/license/pmihaly/cserkweb?style=for-the-badge) 
+![Website](https://img.shields.io/website?style=for-the-badge&url=https%3A%2F%2Fcserkweb.pappmihaly.com%2F)
    
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
    
