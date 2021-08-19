@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 pylint = "*"
 black = "*"
-model-bakery = "*"
 coverage = "*"
 
 [packages]
@@ -14,8 +13,9 @@ django = "*"
 pillow = "*"
 django-ckeditor = "*"
 gunicorn = "*"
-psycopg2 = "*"
+psycopg2-binary = "*"
 django-cleanup = "*"
+model-bakery = "*"
 
 [requires]
 python_version = "3.8"
