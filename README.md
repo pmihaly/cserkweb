@@ -23,7 +23,8 @@ A budakalászi cserkészeknek terveztem ezt a weboldalt, hogy attraktívabb kül
 * ⚜ Mutassuk be a csapatot
 * 🏡 ..., és mutassuk be a bérelhető cserkészházat is
 * ✏ Szervezők eseményeket (pl. táborok) és közleményeket írhatnak ki
-    * 🔍 Bejegyzések az Open Graph metaadat sztenderdet használják  
+    * 🔍 Bejegyzések az Open Graph metaadat sztenderdet használják
+* 🏗 Automatikus tesztelés és deployment (ha github actions nem ölné meg a pipelinet)
 * 🤖 Automatizálás lehetősége, mivel saját adatbázissal dolgozunk
     * ÚECS integráció
     * Weboldal közleményeit közösségi média oldalakon is kiírni
