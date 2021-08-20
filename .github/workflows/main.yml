@@ -16,8 +16,6 @@ jobs:
       run: docker-compose up --build -d
     - name: 🔍 Futó konténerek vizsgálata
       run: docker ps -a
-    - name: 🐍 Django beállítása (mégegyszer, biztonság kedvéért)
-      run: docker-compose exec -T web bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate"
     - name: 🔍 Django logok vizsgálata
       run: docker-compose logs web
     - name: 🚨 Tesztelés
