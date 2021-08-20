@@ -13,7 +13,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name="Cím")
     text = RichTextField(verbose_name="Szöveg", blank=True, null=True)
     author = models.ForeignKey(
-        to=User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
+        User, on_delete=models.CASCADE, related_name="author", verbose_name="Író"
     )
     image = models.ImageField(
         upload_to="blog/cover_images/", verbose_name="Borítókép", blank=True
@@ -91,7 +91,7 @@ class Event(Post):
 
 class Note(models.Model):
     post = models.ForeignKey(
-        "blog.Post", verbose_name="Megjegyzés", on_delete=models.CASCADE
+        Post, verbose_name="Megjegyzés", on_delete=models.CASCADE
     )
     text = models.TextField(verbose_name="Szöveg", blank=True, null=True)
     created_at = models.DateTimeField(
@@ -107,4 +107,3 @@ class Note(models.Model):
     class Meta:
         verbose_name = "Megjegyzés"
         verbose_name_plural = "Megjegyzések"
-

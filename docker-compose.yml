@@ -19,7 +19,7 @@ services:
 
   db:
     container_name: cserkweb_postgres
-    image: postgres:12.0-alpine
+    image: alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
