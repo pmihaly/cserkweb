@@ -91,6 +91,13 @@ A budakalászi cserkészeknek terveztem ezt a weboldalt, hogy attraktívabb kül
    python manage.py migrate 
    python manage.py runserver
    ```
+   
+## Adatstruktúra
+
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/47941079/130237217-b1295227-10b4-4308-bc1a-0ae2e0d69be1.png)
+
+
+
 
 ## Fájlstruktúra
 
