@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: 🔧 .env másolása (biztonság kedvéért, elvileg nem kell)
+        run: cp .env.example .env
       - name: 🖼 kötelező assetek letöltése
         run: mkdir -p media/blog/cover_images && wget --content-disposition -P media/blog/cover_images "https://picsum.photos/2000"
       - name: 🏗 🏃 docker compose stack építése és futtatása
