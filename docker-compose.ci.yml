@@ -1,0 +1,22 @@
+version: "3.3"
+
+# Github actions besokkal (Out of memory), ha egyszerre kell futtatnia a djangot, nginx-et és a postres-t
+
+services:
+  web:
+    container_name: cserkweb_django_ci
+    build: ./
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn --workers=3 cserkweb.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - ./:/usr/src/app/
+      - static:/usr/src/app/static
+      - media:/usr/src/app/media
+    expose:
+      - 8000
+    env_file:
+      - .env.ci
+    restart: always
+
+volumes:
+  static:
+  media:
