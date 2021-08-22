@@ -7,13 +7,13 @@ services:
   web:
     container_name: cserkweb_django_ci
     build: ./
+    command: python manage.py runserver
     volumes:
       - ./:/usr/src/app/
       - static:/usr/src/app/static
       - media:/usr/src/app/media
     env_file:
       - .env.ci
-    restart: always
 
 volumes:
   static:
