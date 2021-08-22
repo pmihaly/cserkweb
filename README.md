@@ -6,10 +6,11 @@
 
 ![Licence Badge](https://img.shields.io/github/license/pmihaly/cserkweb?style=for-the-badge) 
 ![Website](https://img.shields.io/website?style=for-the-badge&url=https%3A%2F%2Fcserkweb.pappmihaly.com%2F)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pmihaly/cserkweb/CI?style=for-the-badge)
    
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
    
-[Kanban tábla](https://github.com/pmihaly/cserkweb/projects/)
+[Kanban tábla](https://github.com/pmihaly/cserkweb/projects/) | [Demó weboldal](https://cserkweb.pappmihaly.com)
 </p>
 
 ---
