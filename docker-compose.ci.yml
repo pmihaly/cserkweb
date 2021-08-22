@@ -7,7 +7,6 @@ services:
   web:
     container_name: cserkweb_django_ci
     build: ./
-    command: bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate"
     volumes:
       - ./:/usr/src/app/
       - static:/usr/src/app/static
