@@ -10,7 +10,7 @@
    
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
    
-[Kanban tábla](https://github.com/pmihaly/cserkweb/projects/)
+[Kanban tábla](https://github.com/pmihaly/cserkweb/projects/) | [Demó weboldal](https://cserkweb.pappmihaly.com)
 </p>
 
 ---
