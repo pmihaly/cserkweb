@@ -157,7 +157,7 @@ cserkweb
 9 directories, 36 files
 ```
 
-## Köszönetnyílvánítás
+## Köszönetnyilvánítás
 
 A cserkészcsapatnak, akik:
 - adták a projekt ihletét
